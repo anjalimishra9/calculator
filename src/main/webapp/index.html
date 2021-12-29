@@ -54,7 +54,7 @@ input[type="text"] {
 	<div class=title>Calculator</div>
 	<table border="1" width="500px">
 		<tr>
-			<td colspan="3"><input type="text" id="result" /></td>
+			<td colspan="3"><input type="text" onkeypress ="return isNumberKey(event)" id="result" /></td>
 			<!-- clr() function will call clr to clear all value -->
 			<td><input type="button" value="c" onclick="clr()" /></td>
 		</tr>
