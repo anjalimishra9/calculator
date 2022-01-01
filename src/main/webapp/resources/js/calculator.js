@@ -26,7 +26,7 @@ function escapeHtml(unsafe) {
 
 function calculate() {
 	var expr = document.getElementById("result").value;	
-	var pattern = /^[\/|_]|[~"#%&*:<>?\\{|}]|[\+\-\*\.\/]{2,}|[\+\-\*\.\/|.]$/;
+	var pattern = /^[\/|_]|[~"#%&:<>?\\{|}]|[\+\-\*\.\/]{2,}|[\+\-\*\.\/|.]$/;
 	var isValidExpression = !pattern.test(expr);
 	//alert(expr + ':' + isValidExpression);
 	if (isValidExpression) {
@@ -44,10 +44,11 @@ function calculate() {
 			},
 			error: function(e) {
 				console.log('error: ', e);
-
+				clr();
 			},
 			done: function(e) {
 				console.log('done');
+				clr();
 			}
 
 		})
