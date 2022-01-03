@@ -33,7 +33,7 @@ function calculate() {
 	//alert(expr + ':' + isValidExpression);
 	if (isValidExpression) {
 		if(isDividedByZero){
-			alert("Dividing by 0 not possible")
+			alert("Dividing by 0 not possible.")
 			clr()
 		}
 		else{
