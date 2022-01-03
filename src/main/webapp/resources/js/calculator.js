@@ -27,7 +27,7 @@ function escapeHtml(unsafe) {
 function calculate() {
 	var expr = document.getElementById("result").value;	
 	var pattern = /^[\/|_]|[~"#%&:<>?\\{|}]|[\+\-\*\.\/]{2,}|[\+\-\*\.\/|.]$/;
-	var patternZeroDivide = /\d\/0[\+\-\*\/]+|\d\/0$/;
+	var patternDivideByZero = /\d\/0[\+\-\*\/]+|\d\/0$/;
 	var isValidExpression = !pattern.test(expr);
 	var isDividedByZero = patternDivideByZero.test(expr);
 	//alert(expr + ':' + isValidExpression);
