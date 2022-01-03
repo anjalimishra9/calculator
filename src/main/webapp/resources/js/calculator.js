@@ -27,13 +27,19 @@ function escapeHtml(unsafe) {
 function calculate() {
 	var expr = document.getElementById("result").value;	
 	var pattern = /^[\/|_]|[~"#%&:<>?\\{|}]|[\+\-\*\.\/]{2,}|[\+\-\*\.\/|.]$/;
+	var patternZeroDivide = /\d\/0[\+\-\*\/]+|\d\/0$/;
 	var isValidExpression = !pattern.test(expr);
+	var isDividedByZero = patternZeroDivide.test(expr);
 	//alert(expr + ':' + isValidExpression);
 	if (isValidExpression) {
-		expr = escapeHtml(expr.toString());
-		console.log('expr: ' + expr);
-
-		$.ajax({
+		if(isDividedByZero){
+			alert("Dividing by 0 not possible.")
+			clr()
+		}
+		else{
+			expr = escapeHtml(expr.toString());
+			console.log('expr: ' + expr);
+			$.ajax({
 			type: "GET",
 			contentType: "application/json",
 			url: getContextPath() + "/api/calculate?expr='" + expr + "'",
@@ -50,8 +56,8 @@ function calculate() {
 				console.log('done');
 				clr();
 			}
-
-		})
+			})
+		}	
 	} else {
 		alert("Found Invalid Expression:" + expr + "!");
 		clr();
